@@ -1,6 +1,7 @@
 {
   "name": "s3fs-init",
   "description": "Init utility for AWS S3 file system package s3fs",
+  "version": "0.0.0-semantic-release",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bugs": "https://github.com/bahmutov/s3fs-init/issues",
   "config": {
