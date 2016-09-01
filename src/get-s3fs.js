@@ -25,4 +25,4 @@ function makeS3fs (bucketName) {
   return fs
 }
 
-module.exports = makeS3fs
+module.exports = {makeS3fs}

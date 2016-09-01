@@ -1,6 +1,7 @@
 # s3fs-init
 
-> Init utility for AWS S3 file system package s3fs
+> Init utility for AWS S3 file system package
+> [s3fs](https://github.com/RiptideElements/s3fs)
 
 [![NPM][npm-icon] ][npm-url]
 
@@ -8,15 +9,42 @@
 [![semantic-release][semantic-image] ][semantic-url]
 [![js-standard-style][standard-image]][standard-url]
 
+## Install and use
+
+```sh
+npm install --save s3fs-init
+```
+
+[List contents](https://github.com/RiptideElements/s3fs#s3fslistcontentspath-marker-callback)
+of a given folder.
+
+```js
+const {makeS3fs, getPathInBucket} = require('s3fs-init')
+const fullPath = 's3://foo/bar'
+const fs = makeS3fs(fullPath)
+const path = getPathInBucket(fullPath) // 'foo/bar'
+fs.listContents(path, '/')
+  .then(list => ...)
+```
+
+Use default bucket name (passed via environment variable `BUCKET_NAME`
+or its aliases, see [src/get-s3fs.js](src/get-s3fs.js))
+
+```js
+const {makeS3fs} = require('s3fs-init')
+const path = 'foo/bar'
+const fs = makeS3fs()
+fs.listContents(path, '/')
+  .then(list => ...)
+```
+
 ### Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2016
 
-
 * [@bahmutov](https://twitter.com/bahmutov)
 * [glebbahmutov.com](http://glebbahmutov.com)
 * [blog](http://glebbahmutov.com/blog)
-
 
 License: MIT - do anything with the code, but don't blame me if it does not work.
 

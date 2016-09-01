@@ -5,6 +5,13 @@ const is = require('check-more-types')
 
 /* global describe, it */
 describe('s3fs-init', () => {
+  describe('makeS3fs', () => {
+    const {makeS3fs} = require('..')
+    it('is a function', () => {
+      la(is.fn(makeS3fs))
+    })
+  })
+
   describe('is s3 full path', () => {
     const {isS3FullPath} = require('..')
 
