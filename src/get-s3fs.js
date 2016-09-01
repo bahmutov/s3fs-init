@@ -5,10 +5,14 @@ const is = require('check-more-types')
 const S3FS = require('s3fs')
 const {getBucketName, isS3FullPath} = require('./s3-utils')
 
+const envBucketName = process.env.BUCKET_NAME ||
+  process.env.AWS_BUCKET ||
+  process.env.S3_BUCKET
+
 function makeS3fs (bucketName) {
   if (!bucketName) {
-    la(is.unemptyString(process.env.BUCKET_NAME), 'missing BUCKET_NAME')
-    bucketName = process.env.BUCKET_NAME
+    la(is.unemptyString(envBucketName), 'missing BUCKET_NAME')
+    bucketName = envBucketName
   }
   la(is.unemptyString(bucketName), 'missing s3 bucket name', bucketName)
 
