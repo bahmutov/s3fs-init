@@ -1,7 +1,6 @@
 {
   "name": "s3fs-init",
   "description": "Init utility for AWS S3 file system package s3fs",
-  "version": "1.0.0",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bugs": "https://github.com/bahmutov/s3fs-init/issues",
   "config": {
@@ -60,7 +59,8 @@
     "secure": "nsp check",
     "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
     "test": "npm run unit",
-    "unit": "mocha src/*-spec.js"
+    "unit": "mocha src/*-spec.js",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "devDependencies": {
     "ban-sensitive-files": "1.8.3",
@@ -71,7 +71,8 @@
     "nsp": "2.6.1",
     "pre-git": "3.10.0",
     "standard": "8.0.0",
-    "standard-format": "2.2.3"
+    "standard-format": "2.2.3",
+    "semantic-release": "^4.3.5"
   },
   "dependencies": {
     "check-more-types": "2.22.0",
