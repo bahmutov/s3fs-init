@@ -38,6 +38,26 @@ fs.listContents(path, '/')
   .then(list => ...)
 ```
 
+Or pass the bucket name explicitly
+
+```js
+const {makeS3fs} = require('s3fs-init')
+const bucket = 'my-test'
+const fs = makeS3fs(bucket)
+```
+
+### Path join
+
+Sometimes when using `path.join` to form s3 paths, we get single forward
+slash at the beginning. This module supports them, thus
+
+```js
+const {isS3FullPath, getPathInBucket, getBucketName} = require('s3fs-init')
+isS3FullPath('s3://foo/bar') === isS3FullPath('s3:/foo/bar')
+getPathInBucket('s3://foo/bar') === getPathInBucket('s3:/foo/bar') === 'bar'
+getBucketName('s3://foo/bar') === getBucketName('s3:/foo/bar') === 'foo'
+```
+
 ### Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2016
