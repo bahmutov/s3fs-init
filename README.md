@@ -46,6 +46,14 @@ const bucket = 'my-test'
 const fs = makeS3fs(bucket)
 ```
 
+The object returned by `makeS3fs` "remembers" its bucket name
+
+```js
+const bucket = 'my-test'
+const fs = makeS3fs(bucket)
+fs.bucketName // "my-test"
+```
+
 ### Path join
 
 Sometimes when using `path.join` to form s3 paths, we get single forward
