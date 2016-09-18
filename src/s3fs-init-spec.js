@@ -38,6 +38,16 @@ describe('s3fs-init', () => {
       const result = getPathInBucket('s3:/foo/bar')
       la(result === 'bar', result)
     })
+
+    it('handles dots in the path', () => {
+      const result = getPathInBucket('s3://basket/foo.jpg')
+      la(result === 'foo.jpg', result)
+    })
+
+    it('handles dashes in the path', () => {
+      const result = getPathInBucket('s3://basket/foo-bar.jpg')
+      la(result === 'foo-bar.jpg', result)
+    })
   })
 
   describe('is s3 full path', () => {
